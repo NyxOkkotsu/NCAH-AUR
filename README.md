@@ -1,12 +1,5 @@
 # 🐾 NCAH : Nyx Cutest AUR Helper 🐾
 
-<p align="center">
-  <img src="[https://img.shields.io/badge/Language-Go-00ADD8?style=for-the-badge&logo=go&logoColor=white](https://img.shields.io/badge/Language-Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)" alt="Go">
-  <img src="[https://img.shields.io/badge/OS-Arch%20Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white](https://img.shields.io/badge/OS-Arch%20Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white)" alt="Arch Linux">
-  <img src="[https://img.shields.io/badge/Cuteness-Overload-ff69b4?style=for-the-badge](https://img.shields.io/badge/Cuteness-Overload-ff69b4?style=for-the-badge)" alt="Cuteness">
-</p>
-
-
 <pre>
   _   _  ____    _    _   _ 
  | \ | |/ ___|  / \  | | | |
@@ -78,13 +71,11 @@ sudo mv ncah /usr/local/bin/ncah
 
 ```text
 ncah -Ss pfetch
-
 ```
 
 🫣 2. Peek at Package Info
 
 ```text
-
 ncah -Si uwufetch
 ```
 
