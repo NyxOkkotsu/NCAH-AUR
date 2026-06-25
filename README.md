@@ -14,7 +14,7 @@ NCAH (Nyx Cutest AUR Helper) is a super cozy, blazing fast, and ultra-cute AUR h
 
 ---
 
-NCAH (Nyx Cutest AUR Helper) is your toxic, ultra-cute, and slightly obsessive AUR helper written from scratch in Go-lang nyaa~! ˚ʚ♡ɞ˚ It doesn't just manage your Arch Linux setup, it completely obsesses over it, keeping your local layout safe from nasty anomalies with absolute peak Jirai aesthetics rawr! 🖤🩹
+NCAH (Nyx Cutest AUR Helper) is your toxic, ultra-cute, and slightly obsessive AUR helper written from scratch in Go-lang nyaa~! ˚ʚ♡ɞ˚ It doesn't just manage your Arch Linux setup, it completely obsesses over it, It focused on Security and PKGBUILD transparency, keeping your local layout safe from nasty anomalies with absolute peak Jirai aesthetics rawr! 🖤🩹
 
 ---
 
