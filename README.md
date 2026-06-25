@@ -6,7 +6,7 @@
   <img src="[https://img.shields.io/badge/Cuteness-Overload-ff69b4?style=for-the-badge](https://img.shields.io/badge/Cuteness-Overload-ff69b4?style=for-the-badge)" alt="Cuteness">
 </p>
 
-<align="center">
+
 <pre>
   _   _  ____    _    _   _ 
  | \ | |/ ___|  / \  | | | |
@@ -32,7 +32,6 @@ Look how cute and incredibly smart Nyx is when protecting your terminal from bad
 
 [https://github.com/user-attachments/assets/00000000-0000-0000-0000-000000000000](https://github.com/user-attachments/assets/00000000-0000-0000-0000-000000000000)
 
-*(Note: You can replace this link with your own uploaded video or awesome demo GIF anytime meww~)*
 
 ---
 
@@ -48,6 +47,52 @@ Before installing anything, Nyx will perform a magical **Security X-Ray Scan** o
 Then, Nyx will instantly classify them into **SAFE** ✨, **WARNING** ⚠️, or **HIGH RISK** 🔥🙀 levels to protect your home!
 
 ---
+
+## 🚀 How to Build & Install
+
+Make sure you already have go and git installed on your computer, okay? (๑•̀ㅂ•́)و✧
+Bash
+
+```text
+
+# 1. Clone your lovely repository
+git clone https://github.com/YOUR_GITHUB_USERNAME/ncah.git
+cd ncah
+
+# 2. Tidy up the Go modules
+go mod tidy
+
+# 3. Build the magical executable binary!
+go build -o ncah cmd/ncah/main.go
+
+```
+
+If you want to invoke Nyx from anywhere across your system without typing ./, simply move the binary to your system PATH:
+Bash
+
+sudo mv ncah /usr/local/bin/ncah
+
+## 🛠️ How to Use nyaaa~~!
+
+🔍 1. Search for Cute Packages
+
+```text
+ncah -Ss pfetch
+
+```
+
+🫣 2. Peek at Package Info
+
+```text
+
+ncah -Si uwufetch
+```
+
+🛡️ 3. Securely Install a Package
+
+```text
+ncah -S pipes.sh
+```
 
 ## 📁 Project Structure
 Nyx keeps her room and her project workspace super tidy and organized meww!
@@ -67,38 +112,4 @@ ncah/
 ├── go.mod                     # Go dependency module map
 └── README.md                  # You are reading this right now nyaa~
 
-🚀 How to Build & Install
 
-Make sure you already have go and git installed on your computer, okay? (๑•̀ㅂ•́)و✧
-Bash
-
-# 1. Clone your lovely repository
-git clone https://github.com/YOUR_GITHUB_USERNAME/ncah.git
-cd ncah
-
-# 2. Tidy up the Go modules
-go mod tidy
-
-# 3. Build the magical executable binary!
-go build -o ncah cmd/ncah/main.go
-
-If you want to invoke Nyx from anywhere across your system without typing ./, simply move the binary to your system PATH:
-Bash
-
-sudo mv ncah /usr/local/bin/ncah
-
-🛠️ How to Use nyaaa~~!
-🔍 1. Search for Cute Packages
-Bash
-
-ncah -Ss pfetch
-
-🫣 2. Peek at Package Info
-Bash
-
-ncah -Si uwufetch
-
-🛡️ 3. Securely Install a Package
-Bash
-
-ncah -S pipes.sh
