@@ -23,7 +23,7 @@ NCAH (Nyx Cutest AUR Helper) is your toxic, ultra-cute, and slightly obsessive A
 Look at how adorable and clingy the package layout is, master~! 🥺👇
 
 <p align="center">
-  <video src="assets/ncah_preview.mp4" width="100%" autoplay loop muted playsinline></video>
+  <video src="https://github.com/user-attachments/assets/9a40909e-c868-48a0-947d-6fa1c46a5eb8" width="100%" autoplay loop muted playsinline></video>
 </p>
 
 ---
