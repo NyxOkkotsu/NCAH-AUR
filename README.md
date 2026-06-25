@@ -23,8 +23,11 @@ Nyx got super tired of boring helpers that blindly install scary, unpredictable 
 ## 📺 Video Preview
 Look how cute and incredibly smart Nyx is when protecting your terminal from bad packages! Check out the quick show nyaa~ 👇
 
-
-
+<p align="center">
+  <video src="
+https://github.com/user-attachments/assets/376e2eff-806c-4daf-bbbd-2e8d16631bd1
+" width="100%" autoplay loop muted playsinline></video>
+</p>
 
 ---
 
