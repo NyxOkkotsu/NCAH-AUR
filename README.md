@@ -86,6 +86,12 @@ ncah -Si uwufetch
 ncah -S pipes.sh
 ```
 
+🗑️ 4. Remove The Package
+
+```text
+ncah -R pipes.sh
+```
+
 ## 📁 Project Structure
 Nyx keeps her room and her project workspace super tidy and organized meww!
 ```text
