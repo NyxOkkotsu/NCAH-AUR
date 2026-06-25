@@ -1,9 +1,14 @@
-   \ \   / /_ _ _ __ ___   ___  _ __ ___  _ __   _ __  _   _  __ _ 
-    \ \ / / _' | '_ ' _ \ / _ \| '_ ' _ \| '_ \ | '_ \| | | |/ _' |
-     \ V / (_| | | | | | | (_) | | | | | | |_) || | | | |_| | (_| |
-      \_/ \__,_|_| |_| |_|\___/|_| |_| |_| .__/ |_| |_|\__, |\__,_|
-                                         |_|           |___/       
-   ========= 🐾 NCAH: Nyx Cutest AUR Helper v1.2.0 🐾 =========
+# 🐾 NCAH : Nyx Cutest AUR Helper 🐾
+
+```text
+  _   _  ____    _    _   _ 
+ | \ | |/ ___|  / \  | | | |
+ |  \| | |     / _ \ | |_| |
+ | |\  | |___ / ___ \|  _  |
+ |_| \_|\____/_/   \_\_| |_|
+                            
+ 🐾 NCAH : Nyx Cutest AUR Helper 🐾
+```
 
 NCAH (Nyx Cutest AUR Helper) is a super cozy, blazing fast, and ultra-cute AUR helper written from scratch in Go
 
