@@ -7,50 +7,102 @@ import (
 	"ncah/internal/security"
 )
 
+const (
+	Cyan        = "\033[0;36m"
+	Green       = "\033[0;32m"
+	Yellow      = "\033[0;33m"
+	Red         = "\033[0;31m"
+	DarkGray    = "\033[1;30m"
+	White       = "\033[0;37m"
+	BoldWhite   = "\033[1;37m"
+	Reset       = "\033[0m"
+)
+
+func PrintStatus(msg string) {
+	fmt.Printf("%sNCAH 🐾%s %s\n", Green, Reset, msg)
+}
+
 func PrintHorizontalRule() {
-	fmt.Println("\033[1;30m~🐾~🐾~🐾~🐾~🐾~🐾~🐾~🐾~🐾~🐾~🐾~🐾~🐾~🐾~🐾~🐾~🐾~\033[0m")
+	fmt.Printf("%s──────────────────────────────────────────────────────────────%s\n", DarkGray, Reset)
 }
 
 func PrintFailure() {
-	fmt.Println("\n\033[1;31mEhh... !! sorry~~ The AUR isn't installed, it is my mistakes? ｡°(°.◜ᯅ◝°)°｡\033[0m")
+	fmt.Printf("\n%sGomennasai~~ The build system ran into a big oofie... ｡°(°.◜ᯅ◝°)°｡%s\n", Red, Reset)
 }
 
 func PrintSuccess() {
-	fmt.Println("\n\033[1;32mThe AUR succesfully Installed nyaww:3 🎉✨ (っ^‿^)っ\033[0m")
+	fmt.Printf("\n%sYatta~! The package was successfully installed nyaa~! Besties forever! 🎉✨ (っ^‿^)っ%s\n", Green, Reset)
 }
 
 func PrintSudoWarning() {
-	fmt.Println("\033[1;33m" + `[!] "This package requires root privileges to proceed."` + "\033[0m")
+	fmt.Printf("%s[!] \"B-but master... NCAH needs your superuser password pwd to continue nyaa~!\"%s\n", Yellow, Reset)
 }
 
 func PrintSearchResults(results []aur.AURPackage) {
 	if len(results) == 0 {
-		fmt.Println("Gomennasai~ Couldn't find any cute packages matching that (っ- ‸ -,)\033[0m")
+		fmt.Printf("%sGomennasai~ Couldn't find any cute packages matching that (っ- ‸ -,)%s\n", Yellow, Reset)
 		return
 	}
-	fmt.Println("🐾 Look what Nyx found for you:")
 	for _, pkg := range results {
-		fmt.Printf("\033[1;36maur/\033[1;37m%s \033[1;32m%s\033[0m\n    💌 %s\n", pkg.Name, pkg.Version, pkg.Description)
+		fmt.Printf("%saur/%s%s %s%s%s\n    💌 %s%s\n", Cyan, BoldWhite, pkg.Name, Reset, Green, pkg.Version, Reset, pkg.Description)
 	}
 }
 
 func PrintPackageInfo(pkg *aur.AURPackage) {
-	fmt.Printf("\033[1;35mPackage Name :\033[0m %s 🐾\n", pkg.Name)
-	fmt.Printf("\033[1;35mCute Version :\033[0m %s\n", pkg.Version)
-	fmt.Printf("\033[1;35mDescription  :\033[0m %s\n", pkg.Description)
-	fmt.Printf("\033[1;35mHome Link    :\033[0m %s\n", pkg.URL)
-	fmt.Printf("\033[1;35mCare Taker   :\033[0m %s\n", pkg.Maintainer)
+	PrintHorizontalRule()
+	fmt.Printf("%s📂 Super Detailed Metadata Profile for Bestie: %s%s\n", Cyan, BoldWhite, pkg.Name)
+	PrintHorizontalRule()
+	fmt.Printf("%s  • Package Base    :%s %s\n", Cyan, Reset, pkg.PackageBase)
+	fmt.Printf("%s  • Adoption Version:%s %s\n", Cyan, Reset, pkg.Version)
+	fmt.Printf("%s  • Description     :%s %s\n", Cyan, Reset, pkg.Description)
+	fmt.Printf("%s  • Upstream Link   :%s %s\n", Cyan, Reset, pkg.URL)
+	fmt.Printf("%s  • Source Git Repo :%s https://aur.archlinux.org/%s.git\n", Cyan, Reset, pkg.PackageBase)
+	fmt.Printf("%s  • Head Pat Giver  :%s %s\n", Cyan, Reset, pkg.Maintainer)
+	fmt.Printf("%s  • License Profile :%s %s\n", Cyan, Reset, stringify(pkg.License))
+	fmt.Printf("%s  • Popularity Score:%s %.2f 🔥\n", Cyan, Reset, pkg.Popularity)
+	fmt.Printf("%s  • Community Votes :%s %d 🗳️\n", Cyan, Reset, pkg.NumVotes)
+
+	if len(pkg.Depends) > 0 {
+		fmt.Printf("%s  • Core Buddies    :%s %s\n", Cyan, Reset, stringify(pkg.Depends))
+	}
+	if len(pkg.MakeDepends) > 0 {
+		fmt.Printf("%s  • Build Buddies   :%s %s\n", Cyan, Reset, stringify(pkg.MakeDepends))
+	}
+	if len(pkg.OptDepends) > 0 {
+		fmt.Printf("%s  • Optional Extras :%s %s\n", Cyan, Reset, stringify(pkg.OptDepends))
+	}
+	PrintHorizontalRule()
 }
 
 func PrintDependencies(depends []string, makeDepends []string) {
 	if len(depends) > 0 {
-		fmt.Printf("📦 Core Buddies: %s\n", stringify(depends))
+		fmt.Printf("  📦 Core Buddies: %s%s%s\n", Cyan, stringify(depends), Reset)
 	}
 	if len(makeDepends) > 0 {
-		fmt.Printf("🛠️  Build Buddies: %s\n", stringify(makeDepends))
+		fmt.Printf("  🛠️  Build Buddies: %s%s%s\n", Yellow, stringify(makeDepends), Reset)
 	}
 	if len(depends) == 0 && len(makeDepends) == 0 {
-		fmt.Println("Woww! This package is super independent, no buddies needed meww~")
+		fmt.Printf("  %sWoww! This package is super independent, no besties needed meww~%s\n", Green, Reset)
+	}
+}
+
+func PrintColorizedPKGBUILD(content string) {
+	lines := strings.Split(content, "\n")
+	for i, line := range lines {
+		lineNo := i + 1
+		trimmed := strings.TrimSpace(line)
+		fmt.Printf("%s%3d │ %s", DarkGray, lineNo, Reset)
+
+		if strings.HasPrefix(trimmed, "#") {
+			fmt.Printf("%s%s%s\n", DarkGray, line, Reset)
+		} else if strings.Contains(line, "=") && !strings.Contains(line, "()") {
+			parts := strings.SplitN(line, "=", 2)
+			fmt.Printf("%s%s%s=%s%s%s\n", Cyan, parts[0], Reset, White, parts[1], Reset)
+		} else if strings.Contains(line, "()") || strings.HasPrefix(trimmed, "function ") {
+			fmt.Printf("%s%s%s\n", Green, line, Reset)
+		} else {
+			fmt.Printf("%s%s%s\n", White, line, Reset)
+		}
 	}
 }
 
@@ -58,23 +110,29 @@ func PrintSecurityReport(report *security.ScanReport) {
 	var color string
 	switch report.RiskLevel {
 	case security.Safe:
-		color = "\033[1;32m[SAFE] ✨ Nyx loves this pack!\033[0m"
+		color = fmt.Sprintf("%s[SAFE] ✨ NCAH core loves this wholesome code signature!%s", Green, Reset)
 	case security.Warning:
-		color = "\033[1;33m[WARNING] ⚠️ Please follow your heart carefully~\033[0m"
+		color = fmt.Sprintf("%s[WARNING] ⚠️ Mindful inspection required, nyaa!%s", Yellow, Reset)
 	case security.HighRisk:
-		color = "\033[1;31m[HIGH RISK] 🔥🙀 Oh noes, super scary!\033[0m"
+		color = fmt.Sprintf("%s[HIGH RISK] 🔥🙀 Dangerous anomalies detected rawr!%s", Red, Reset)
 	}
 
-	fmt.Printf("\n🛡️  \033[1;37mNyx's Security X-Ray Result:\033[0m %s\n", color)
+	fmt.Printf("\n🛡️  %sNCAH Security Assessment Tools:%s %s\n", BoldWhite, Reset, color)
 	if len(report.Findings) > 0 {
-		fmt.Println("🚨 Uh-oh, found some naughty bits inside:")
 		for _, finding := range report.Findings {
-			fmt.Printf("   - %s\n", finding)
+			var rColor string
+			if finding.RiskLevel == security.HighRisk {
+				rColor = fmt.Sprintf("%sHIGH%s", Red, Reset)
+			} else {
+				rColor = fmt.Sprintf("%sWARNING%s", Yellow, Reset)
+			}
+			fmt.Printf("%s[!] Risk: %s%s\n", Red, rColor, Reset)
+			fmt.Printf("    %sline %d:%s %s%s%s\n", DarkGray, finding.LineNo, Reset, White, finding.MatchedText, Reset)
+			fmt.Printf("    %sreason:%s %s\n\n", Cyan, Reset, finding.Reason)
 		}
 	} else {
-		fmt.Println("   Squeaky clean! Everything looks wholesome and safe nyaa~")
+		fmt.Printf("    %s✔ Squeaky clean! Wholesome code signature verified nyaa~%s\n", Green, Reset)
 	}
-	fmt.Println()
 }
 
 func stringify(slice []string) string {

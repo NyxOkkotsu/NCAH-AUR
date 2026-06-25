@@ -9,6 +9,6 @@ func PrintBanner() {
    \ V / (_| | | | | | | (_) | | | | | | |_) || | | | |_| | (_| |
     \_/ \__,_|_| |_| |_|\___/|_| |_| |_| .__/ |_| |_|\__, |\__,_|
                                        |_|           |___/       
-        ========= 🐾 NCAH: Nyx Cutest AUR Helper v1.0.0 🐾 =========`
-	fmt.Println("\033[1;35m" + banner + "\033[0m\n")
+        ========= 🐾 NCAH: Nyx Cutest AUR Helper v1.2.0 🐾 =========`
+	fmt.Println("\033[0;36m" + banner + "\033[0m\n")
 }

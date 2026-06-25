@@ -9,7 +9,7 @@ import (
 
 func AskConfirmation(message string) bool {
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Printf("🐾 %s \033[1;33m(Y/n)\033[0m: ", message)
+	fmt.Printf("🐾 %s \033[0;36m(Y/n)\033[0m: ", message)
 	input, err := reader.ReadString('\n')
 	if err != nil {
 		return false
