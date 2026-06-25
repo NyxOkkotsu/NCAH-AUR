@@ -62,9 +62,9 @@ go build -o ncah cmd/ncah/main.go
 ```
 
 If you want to invoke Nyx from anywhere across your system without typing ./, simply move the binary to your system PATH:
-Bash
-
+```text
 sudo mv ncah /usr/local/bin/ncah
+```
 
 ## 🛠️ How to Use nyaaa~~!
 
