@@ -46,11 +46,6 @@ Make sure you have `go` and basic development tools ready on your machine layout
 go build -o ncah cmd/ncah/main.go
 ```
 
-or install to /usr/bin for command symlink nyaa~:
-
-```bash
-make
-```
 
 Uwaaa~! Now your own custom binary helper is fully compiled and ready to stay by your side forever! 🚀🐾
 🐾 Command Guide (How to Control Me!)
