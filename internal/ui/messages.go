@@ -30,6 +30,10 @@ func PrintFailure() {
 	fmt.Printf("\n%sGomennasai~~ The build system ran into a big oofie... ｡°(°.◜ᯅ◝°)°｡%s\n", Red, Reset)
 }
 
+func PrintCancel() {
+	fmt.Printf("\n%sEhhh... Are You Cancel This Transaction Nyaww~~ (｡>﹏<｡)%s\n", Red, Reset)
+}
+
 func PrintSuccess() {
 	fmt.Printf("\n%sYatta~! The package was successfully installed nyaa~! Besties forever! 🎉✨ (っ^‿^)っ%s\n", Green, Reset)
 }
