@@ -22,13 +22,11 @@ func main() {
 	flag.Parse()
 
 	if *searchFlag != "" {
-		ui.PrintStatus("pouncing on the database to sniff out matching packages rawr... 🐾")
 		handleSearch(*searchFlag)
 		return
 	}
 
 	if *infoFlag != "" {
-		ui.PrintStatus("peeking at the super secret package metadata definitions uwu... 📂")
 		handleInfo(*infoFlag)
 		return
 	}
@@ -47,6 +45,10 @@ func main() {
 }
 
 func handleSearch(query string) {
+	ui.PrintStatus("sniffing official pacman databases... 🐾")
+	build.PrintOfficialSearch(query)
+	ui.PrintHorizontalRule()
+	ui.PrintStatus("pouncing on the AUR database layout nyaa... 🐾")
 	results, err := aur.SearchPackages(query)
 	if err != nil {
 		ui.PrintFailure()
@@ -56,6 +58,12 @@ func handleSearch(query string) {
 }
 
 func handleInfo(pkgName string) {
+	ui.PrintStatus("peeking at official repository definitions... 📂")
+	if build.PrintOfficialInfo(pkgName) {
+		return
+	}
+	ui.PrintHorizontalRule()
+	ui.PrintStatus("not found in official repos! tracking down AUR metadata uwu... 📂")
 	info, err := aur.GetPackageInfo(pkgName)
 	if err != nil || info == nil {
 		ui.PrintFailure()
@@ -67,18 +75,30 @@ func handleInfo(pkgName string) {
 func handleRemove(pkgName string) {
 	ui.PrintStatus(fmt.Sprintf("preparing uninstallation protocol to banish %s nyaa...", pkgName))
 	if !ui.AskConfirmation(fmt.Sprintf("Are you absolutely sure you want to purge %s and its configuration remnants from our cozy layout?", pkgName)) {
-		fmt.Println("Action aborted! package remains cozy and untouched meww~ (ς°´o`°ς)")
+		ui.PrintCancel()
 		return
 	}
 	err := build.RemovePackage(pkgName)
 	if err != nil {
-		ui.PrintFailure()
+		ui.PrintCancel()
 		return
 	}
 	fmt.Printf("\n\033[0;32m✔ %s has been successfully vaporized from the system layout! nyaa~\033[0m\n", pkgName)
 }
 
 func handleInstall(pkgName string) {
+	if build.IsOfficialPackage(pkgName) {
+		ui.PrintStatus("found inside official repositories! preparing native pacman deployment protocol nyaa~ ✨")
+		ui.PrintSudoWarning()
+		err := build.InstallOfficialPackage(pkgName)
+		if err != nil {
+			ui.PrintCancel()
+			return
+		}
+		ui.PrintSuccess()
+		return
+	}
+
 	ui.PrintStatus("waking up remote AUR api mirrors... mwah")
 	info, err := aur.GetPackageInfo(pkgName)
 	if err != nil || info == nil {
@@ -90,7 +110,7 @@ func handleInstall(pkgName string) {
 	ui.PrintDependencies(info.Depends, info.MakeDepends)
 
 	if !ui.AskConfirmation("Proceed with downloading installation recipes?") {
-		fmt.Println("Gumuuu... Action aborted by user! (っ°´o`°ς)")
+		ui.PrintCancel()
 		return
 	}
 
@@ -123,7 +143,7 @@ func handleInstall(pkgName string) {
 			if ui.AskConfirmation("Do you want to ignore warnings and force step proceed manually?") {
 				ui.PrintStatus("bypassing safety trigger guards on user demand...")
 			} else {
-				fmt.Println("Phew~ Smart choice! Application deployment abandoned safely! 🛡️( •̀ ω •́ )✧")
+				ui.PrintCancel()
 				return
 			}
 		}
