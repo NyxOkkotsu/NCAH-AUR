@@ -46,6 +46,16 @@ Make sure you have `go` and basic development tools ready on your machine layout
 go build -o ncah cmd/ncah/main.go
 ```
 
+Auto Symlink to /usr/bin/ 
+
+```bash
+# Install
+make
+
+# If Error or "Makefile:4: *** missing separator (did you mean TAB instead of 8 spaces?).  Stop." use this command first then make
+sed -i 's/        /\t/g' Makefile
+```
+
 
 Uwaaa~! Now your own custom binary helper is fully compiled and ready to stay by your side forever! 🚀🐾
 🐾 Command Guide (How to Control Me!)
