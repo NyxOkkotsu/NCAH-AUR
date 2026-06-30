@@ -16,14 +16,22 @@ NCAH (Nyx Cutest AUR Helper) is a super cozy, blazing fast, and ultra-cute AUR h
 
 NCAH (Nyx Cutest AUR Helper) is your toxic, ultra-cute, and slightly obsessive AUR helper written from scratch in Go-lang nyaa~! ˚ʚ♡ɞ˚ It doesn't just manage your Arch Linux setup, it completely obsesses over it, It focused on Security and PKGBUILD transparency, keeping your local layout safe from nasty anomalies with absolute peak Jirai aesthetics rawr! 🖤🩹
 
+This AUR helper features two layers of security: the first checks the PKGBUILD source—allowing you to edit it—while the second integrates with ClamAV for added protection. NCAH automatically aborts the operation if the package being installed appears suspicious or contains threats such as malware, spyware, trojan etc.
+
 ---
 
 ## 🎥 Toxic Cute Terminal Preview ⪩⪨
 
 Look at how adorable and clingy the package layout is, master~! 🥺👇
 
+* A Succesfully example
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/9a40909e-c868-48a0-947d-6fa1c46a5eb8" width="100%" autoplay loop muted playsinline></video>
+  <video src="https://github.com/user-attachments/assets/0e16d001-9581-47e7-b88e-0fe91c92032e" width="100%" autoplay loop muted playsinline></video>
+</p>
+
+* Fail or infected example
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/8dc876cd-e7e0-4a23-b114-beafcc3b4040" width="100%" autoplay loop muted playsinline></video>
 </p>
 
 ---
